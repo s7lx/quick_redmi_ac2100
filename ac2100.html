@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<meta name='viewport' content='width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no' />
+<title>Redmin AC2100 flash tools</title>
+<body >
+  Redmin AC2100 flash tools
+		<br /><br />
+    <div>
+    <a> &nbsp;stok : </a>
+    <input type="text" name="stok" class="btn-large" id="stok" size=60 value=""/>
+    <br />
+
+    <br />
+    <input type="submit" class="btn btn-primary" onClick="action();" value="Create"  />
+		<br />
+		<img src="" id="img_pic" />
+		<br />
+		<p id="url1"></p><br />
+    <p id="url2"></p><br />
+    <p id="url3"></p>
+    <a >Step 3. </a><input type="text" name="st3" class="btn-large" id="st3" size=80 value="scp breed-mt7621-xiaomi-r3g.bin root@192.168.31.1:/tmp/" /><br />
+    <a >Step 4. </a><input type="text" name="st4" class="btn-large" id="st4" size=80 value='ssh root@192.168.31.1 "mtd -r write /tmp/breed-mt7621-xiaomi-r3g.bin Bootloader"' /><br />
+    <a >Step 5. SET ENV_VAR xiaomi.r3g.bootfw=2 </a><br />
+    <a >Step 6. UPLOAD *initramfs-kernel.bin </a><br />
+    <a href='http://192.168.1.1/cgi-bin/luci/admin/system/flash' target='_blank'>Step 7. Click here to flash Customized-Binary-Package</a><br />
+    <a href='http://192.168.1.1/cgi-bin/luci/admin/network/firewall' target='_blank'>Step 8. Click here to set firewall.flow_offload ON</a><br />
+
+		</div>
+		</body>
+		<script>
+
+//var img_pic=document.getElementById("img_pic");
+var url_id1=document.getElementById("url1");
+var url_id2=document.getElementById("url2");
+
+function action ()
+{
+var sstok=document.getElementById("stok");
+//var pt=document.getElementById("port");
+//var mtd=document.getElementById("methed");
+//var psw=document.getElementById("pswd");
+    //console.log(psw);	
+    //aaa=mtd.value+":"+psw.value+"@"+dm.value+":"+pt.value;
+    //bbb=mtd.value+":"+psw.value;
+    //ccc="ss://"+btoa(bbb)+"@"+dm.value+":"+pt.value;
+    aaa="http://192.168.31.1/cgi-bin/luci/;stok="+sstok.value+"/api/misystem/set_config_iotdev?bssid=Xiaomi&user_id=longdike&ssid=-h%3B%20nvram%20set%20ssh_en%3D1%3B%20nvram%20commit%3B%20sed%20-i%20's%2Fchannel%3D.*%2Fchannel%3D%5C%22debug%5C%22%2Fg'%20%2Fetc%2Finit.d%2Fdropbear%3B%20%2Fetc%2Finit.d%2Fdropbear%20start%3Bdm.value"
+    bbb="http://192.168.31.1/cgi-bin/luci/;stok="+sstok.value+"/api/misystem/set_config_iotdev?bssid=gallifrey&user_id=doctor&ssid=-h%0Aecho%20-e%20%27password%5Cnpassword%27%20%7C%20passwd%20root%0A"
+    //console.log(psw);
+    //console.log(aaa);
+    url_id1.innerHTML="<a href="+aaa+" target='_blank'>Step 1. Click this URL</a><br />&nbsp;";
+    url_id2.innerHTML="<a href="+bbb+" target='_blank'>Step 2. Click this URL</a><br />&nbsp;";
+    //img_pic.src="http://hk3.gzlong7.net/grvt_mirror/chart?cht=qr&chs=400x400&choe=UTF-8&chld=L|4&chl=ss://"+btoa(aaa);
+    //console.log();
+    
+		//	alert(img_pic.src);
+}
+
+		</script>
+		</html>
+
+
